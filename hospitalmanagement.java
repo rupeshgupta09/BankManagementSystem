@@ -12,20 +12,51 @@ public class hospitalmanagement{
     String[] Doctorname = new  String[100];
     int[] Patientpriority = new int[100];
     int count =0;
-    void viewAllpatient()
+    void searchPatient(int id)
     {
-        if(count==0)
-        {
-            System.out.println("No patient in the queue");
-            return;
-            
-        }
-        System.out.println("Patient List")
-            for(int i=0;)
+        for(int i =0;;i<count ;i++)
             {
-                System.out.println("*********\n"+"ID:"+)
+            if(patientId[i]==id)
+            {
+                System.out.println("Patient Found:");
+                 System.out.println("Patient ID:" +PatientId[i]);
+                 System.out.println("Patient Name:" +PatientName[i]);
+                 System.out.println("Patient Age:" +PatientAge[i]);
+                 System.out.println("Patient Gender:" +PatientGender[i]);
+                 System.out.println("Patient Priority:" +PatientPriority[i]);
+                 System.out.println("Patient Disease:" +PatientDisease[i]);
+                 System.out.println("Patient Doctor Name:" +PatientDoctorName[i]);
+            }
+            else{
+                System.out.println("Patient not found");
+            }
+               
+        }
+    }
+    
+                               
+    void viewAllPatients()
+    {
+        if(count ==0)
+        {
+            System.out.println("No patient in the queue.");
+            return;
+        }
+        System.out.println("Patient List.");
+        for(int i =0 ; i < count; i++)
+            {
+                System.out.println("Patient ID:" +PatientId[i]);
+                 System.out.println("Patient Name:" +PatientName[i]);
+                 System.out.println("Patient Age:" +PatientAge[i]);
+                 System.out.println("Patient Gender:" +PatientGender[i]);
+                 System.out.println("Patient Priority:" +PatientPriority[i]);
+                 System.out.println("Patient Disease:" +PatientDisease[i]);
+                 System.out.println("Patient Doctor Name:" +PatientDoctorName[i]);
+                System.out.println("------------------------");
             }
     }
+    
+                
     void addPatient()
     {
         if(count<100)
