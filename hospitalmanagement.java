@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class hospitalmanagement{
     Scanner sc = new Scanner(System.in);
     int[] Patientid = new int[100];
-    String[] PatienName = new String[100];
-    int[] PatienAge = new int[100];
+    String[] PatientName = new String[100];
+    int[] PatientAge = new int[100];
     String[] PatientGender = new  String[100];
     String[] PatientDisease = new  String[100];
     String[] Doctorname = new  String[100];
@@ -14,24 +14,24 @@ public class hospitalmanagement{
     int count =0;
     void removePatient()
     {
-        System.outy.println("Enter patient ID to remove");
+        System.out.println("Enter patient ID to remove");
         int id = sc.nextInt();
-        for(int i =0;i< vcount;i++)
+        for(int i =0;i< count;i++)
             {
-            if(patient==id)
+            if(Patientid[i]==id)
             {
-                for(intj=1;j<count-1;j++)
+                for(int j=1;j<count-1;j++)
                     {
                         Patientid[j] = Patientid[j+1];
                         PatientName[j] = PatientName[j+1];
-                        PatientAge[j] = PatientGender[j+1];
-                        PatientGender[j] = PatientName[j+1];
+                        PatientAge[j] = PatientAge[j+1];
+                        PatientGender[j] = PatientGender[j+1];
                         Patientpriority[j] = Patientpriority[j+1];
                         PatientDisease[j] = PatientDisease[j+1];
-                        PatientDoctorname[j] = Doctorname[j+1];
+                        Doctorname[j] = Doctorname[j+1];
                     }
                 count--;
-                System.out.println("Patient removed Successfully..."};
+                System.out.println("Patient removed Successfully...");
         return;
     }
 }
@@ -39,20 +39,20 @@ System.out.println("Patient not found....");
 }
 void UpdatePatient(int id )
     {
-    for (int i=0;i< count;i++)
+    for (int i=0;i<count;i++)
         {
-            if(PatientId[i] ==id)
+            if(Patientid[i] == id)
             {
                 System.out.println("Enter Patient Name:");
                 PatientName[i] = sc.nextLine();
                 sc.next();
                  System.out.println("Enter Patient Age:");
-                PatientAge[i] = sc.nextLine();
+                PatientAge[i] = sc.nextInt();
                 sc.next();
                 System.out.println("Enter Patient Gender:");
                 PatientGender[i] = sc.nextLine();
                 System.out.println("Enter Patient Age:");
-                PatientAge[i] = sc.nextLine(); 
+                PatientAge[i] = sc.nextInt(); 
                 System.out.println("Enter patient priority 1 = emergency ,2 = normal");
                 Patientpriority[count]=sc.nextInt();
                  System.out.println("Enter patient Disease:");
@@ -66,25 +66,33 @@ void UpdatePatient(int id )
 
     void searchPatient()
     {
-        for(int i =0;;i<count ;i++)
+    if(count == 0)
+    {
+             System.out.println("Please Add patient");
+    }else {
+        
+
+         System.out.println("Enter Patient Id:");
+            int id =sc.nextInt();
+        for(int i =0;i<count ;i++)
             {
-            if(patientId[i]==id)
+            if(Patientid[i]==id)
             {
                 System.out.println("Patient Found:");
-                 System.out.println("Patient ID:" +PatientId[i]);
+                 System.out.println("Patient ID:" +Patientid[i]);
                  System.out.println("Patient Name:" +PatientName[i]);
                  System.out.println("Patient Age:" +PatientAge[i]);
                  System.out.println("Patient Gender:" +PatientGender[i]);
-                 System.out.println("Patient Priority:" +PatientPriority[i]);
+                 System.out.println("Patient Priority:" +Patientpriority[i]);
                  System.out.println("Patient Disease:" +PatientDisease[i]);
-                 System.out.println("Patient Doctor Name:" +PatientDoctorName[i]);
+                 System.out.println("Patient Doctor Name:" +Doctorname[i]);
             }
             else{
                 System.out.println("Patient not found");
             }
                
         }
-    }
+    }    }
     
                                
     void viewAllPatients()
@@ -97,13 +105,13 @@ void UpdatePatient(int id )
         System.out.println("Patient List.");
         for(int i =0 ; i < count; i++)
             {
-                System.out.println("Patient ID:" +PatientId[i]);
+                System.out.println("Patient ID:" +Patientid[i]);
                  System.out.println("Patient Name:" +PatientName[i]);
                  System.out.println("Patient Age:" +PatientAge[i]);
                  System.out.println("Patient Gender:" +PatientGender[i]);
-                 System.out.println("Patient Priority:" +PatientPriority[i]);
+                 System.out.println("Patient Priority:" +Patientpriority[i]);
                  System.out.println("Patient Disease:" +PatientDisease[i]);
-                 System.out.println("Patient Doctor Name:" +PatientDoctorName[i]);
+                 System.out.println("Patient Doctor Name:" +Doctorname[i]);
                 System.out.println("------------------------");
             }
     }
@@ -111,10 +119,10 @@ void UpdatePatient(int id )
                 
     void addPatient()
     { 
-        if(count<100)
+        if(count<100){
         System.out.println("Enter patient Id :");
-        Patientid[count]=sc.nextLine();
-        sc.nextline();
+        Patientid[count]=sc.nextInt();
+        sc.nextLine();
         System.out.println("Enter patient Name :");
         PatientName[count]=sc.nextLine();
         sc.nextLine();
@@ -130,7 +138,8 @@ void UpdatePatient(int id )
         System.out.println("Enter patient priority 1 = emergency ,2 = normal");
         Patientpriority[count]=sc.nextInt();
         count++; 
-    }    else{
+        }
+   else{
         System.out.println("Queue is full");
     }
 }
@@ -161,17 +170,19 @@ void hospitalReport()
     int normalCount =0;
     for(int i = 0;i< count;i++)
         {
-            if(PatientPriority[i] ==1)
+            if(Patientpriority[i] ==1)
             {
-                emergency count++;
+                emergencyCount++;
             }
             else {
-                normal count ++;
+                normalCount++;
             }
         }
-    System.out.println("Emergency PAtients:" +emergencyCount);
+        System.out.println("Emergency PAtients:" +emergencyCount);
     System.out.println("Normal Patients:"+normalCount);
 }
+    
+
 
     public static void main (String[] args)
     {
@@ -188,18 +199,15 @@ void hospitalReport()
                 case 2:
                     obj.viewAllPatients();
                     break;
-                    case3:
-                    if(obj.count==0)
-                    {
-                        System.out.println(Please Add patient..");
-                    }
-                    else{
-                        System.out.println("Enter Patient Id:");
-                        int id =obj.sc.nextInt();
-                        obj.searchPatient(id);
-                    }
+                case 3:
+                
+                   
+                  
+                       
+                        obj.searchPatient();
+                    
                     break;
-                case 7;
+                case 7:
                     if(obj.count == 0)
                     {
                         System.out.println("Please Add patient...");
@@ -224,3 +232,7 @@ void hospitalReport()
             while(choice!=10);
     }         
 }
+
+   
+       
+
